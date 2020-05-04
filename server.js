@@ -12,7 +12,10 @@ mongoose.connect(
   () => console.log("connected to mongodb")
 );
 
-// define routes
+// Middleware
+app.use(express.json());
+
+// define routes middleware
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/articles", require("./routes/articles"));

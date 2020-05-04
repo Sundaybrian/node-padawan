@@ -1,10 +1,15 @@
 const router = require("express").Router();
 const User = require("../models/User");
+const { registerValidation } = require("../validation");
 
 // @route   POST api/users
 // @desc    Register a user
 // @access  public
 router.post("/register", async (req, res) => {
+  // validate
+  const { error } = registerValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
   // create user instance
   const user = new User({
     name: req.body.name,
