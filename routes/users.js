@@ -1,11 +1,24 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
+const User = require("../models/User");
 
 // @route   POST api/users
 // @desc    Register a user
 // @access  public
-router.post("/", (req, res) => {
-  res.send("Register a user");
+router.post("/register", async (req, res) => {
+  // create user instance
+  const user = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+  });
+
+  try {
+    // save to mongodb
+    const savedUser = await user.save();
+    res.send(savedUser);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 // @route   GET api/users
