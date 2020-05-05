@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const auth = require("../middlewares/auth");
+const user = require("../models/User");
 const Article = require("../models/Article");
+const { check, validationResult } = require("express-validator");
 
 // @route   GET api/articles
 // @desc    Get all club articles
@@ -19,9 +21,42 @@ router.get("/", auth, async (req, res) => {
 // @route   POST api/articles
 // @desc    Create an article
 // @access  Private
-router.post("/", (req, res) => {
-  res.send("Create Article");
-});
+router.post(
+  "/",
+  [
+    auth,
+    [
+      check("title", "Title is required").not().isEmpty(),
+      check("subtitle", "Subtitle is required").not().isEmpty(),
+      check("content", "Content is required").not().isEmpty(),
+      check("imageUrl", "imageUrl is required").not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    // validate
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.send(400).json({ errors: errors.array() });
+
+    // destructure
+    const { title, subtitle, content, imageUrl } = req.body;
+    try {
+      const article = new Article({
+        author: req.user.id,
+        title,
+        subtitle,
+        content,
+        imageUrl,
+      });
+
+      const savedArticle = await article.save();
+      res.status(201).json(savedArticle);
+    } catch (error) {
+      console.error(error.message);
+      res.json(error);
+    }
+  }
+);
 
 // @route   PUT api/articles/:id
 // @desc    Update an article
