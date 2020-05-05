@@ -1,11 +1,19 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
+const auth = require("../middlewares/auth");
+const Article = require("../models/Article");
 
 // @route   GET api/articles
 // @desc    Get all club articles
 // @access  Public
-router.get("/", (req, res) => {
-  res.send("Get all articles");
+router.get("/", auth, async (req, res) => {
+  try {
+    // fetch all articles belonging to particular author
+    // TODO:fetch by clubs
+    const articles = await Article.find({ author: req.user.id });
+    res.status(200).json(articles);
+  } catch (error) {
+    res.send("Server Error");
+  }
 });
 
 // @route   POST api/articles

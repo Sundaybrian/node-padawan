@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     max: 1024,
     min: 8,
   },
+  type: {
+    type: String,
+    default: "user",
+  },
   date: {
     type: Date,
     default: Date.now,
