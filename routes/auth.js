@@ -7,7 +7,7 @@ const User = require("../models/User");
 // @route GET api/auth
 // @desc  Get logged in user
 // @access Private
-router.get("/", (req, res) => {
+router.get("/current-user", (req, res) => {
   res.send("Get logged in user");
 });
 
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 // @desc Auth user & get token
 // @access Public
 router.post(
-  "/",
+  "/login",
   [
     check("email", "Please enter a valid email").isEmail(),
     check("password", "Password is required").exists(),
