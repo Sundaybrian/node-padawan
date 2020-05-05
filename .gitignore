@@ -8,14 +8,14 @@ node_modules
 /coverage
 
 # production
-/build
+/frontend/build
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
 .env
 
 npm-debug.log*
