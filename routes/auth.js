@@ -1,14 +1,21 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth");
 const { check, validationResult } = require("express-validator");
 const User = require("../models/User");
 
 // @route GET api/auth
 // @desc  Get logged in user
 // @access Private
-router.get("/current-user", (req, res) => {
-  res.send("Get logged in user");
+router.get("/current-user", auth, async (req, res) => {
+  try {
+    // fetch user obj without passorwd
+    const user = await User.findById(req.user.id).select("-password");
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 // @route POST api/auth
