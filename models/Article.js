@@ -5,10 +5,10 @@ const articleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     refs: "users",
   },
-  club: {
-    type: mongoose.Schema.Types.ObjectId,
-    refs: "clubs",
-  },
+  // club: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   refs: "clubs",
+  // },
   title: {
     type: String,
     required: true,
