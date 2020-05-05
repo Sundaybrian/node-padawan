@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const { registerValidation } = require("../validation");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 // @route   POST api/users
 // @desc    Register a user
@@ -13,7 +14,7 @@ router.post("/register", async (req, res) => {
 
   // check if useremail exists on the db
   const exists = await User.findOne({ email: req.body.email });
-  if (exists) return res.status(400).send("Email already exists");
+  if (exists) return res.status(400).json({ msg: "Email already exists" });
 
   // hashing password
   const salt = await bcrypt.genSalt(10);
@@ -29,8 +30,24 @@ router.post("/register", async (req, res) => {
   try {
     // save to mongodb
     const savedUser = await user.save();
-    res.send(savedUser);
+    const payload = {
+      user: {
+        id: savedUser._id,
+      },
+    };
+
+    // generate token
+    jwt.sign(
+      payload,
+      process.env.TOKEN_SECRET,
+      { expiresIn: 36000 },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (error) {
+    console.error(error.message);
     res.status(400).send(error);
   }
 });
