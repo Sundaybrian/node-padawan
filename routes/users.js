@@ -43,6 +43,7 @@ router.post(
 
     try {
       // save to mongodb
+      // TODO all more metadata to the user e.g type, club
       const savedUser = await user.save();
       const payload = {
         user: {
