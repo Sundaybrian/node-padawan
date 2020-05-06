@@ -1,29 +1,41 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import {
+  IonContent,
+  IonButtons,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonIcon,
+  IonLabel,
+  IonButton,
+} from "@ionic/react";
+import { personCircle, helpOutline, home } from "ionicons/icons";
 import PropTypes from "prop-types";
 
 const Navbar = ({ title }) => {
   return (
     //   icons will change later on
-    <ion-toolbar color="primary">
-      <ion-buttons slot="secondary">
-        <ion-button>
-          <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-        </ion-button>
-        <ion-button>
-          <ion-icon slot="icon-only" name="search"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-buttons slot="primary">
-        <ion-button color="secondary">
-          <ion-icon
+    <IonToolbar color="primary">
+      <IonButtons slot="secondary">
+        <IonButton href="/">
+          <IonIcon slot="icon-only" icon={home} />
+        </IonButton>
+        <IonButton href="/about">
+          <IonIcon slot="icon-only" icon={helpOutline} />
+        </IonButton>
+      </IonButtons>
+      <IonButtons slot="primary">
+        <IonButton color="primary">
+          <IonIcon
             slot="icon-only"
             ios="ellipsis-horizontal"
             md="ellipsis-vertical"
-          ></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-title>{title}</ion-title>
-    </ion-toolbar>
+          />
+        </IonButton>
+      </IonButtons>
+      <IonTitle>{title}</IonTitle>
+    </IonToolbar>
   );
 };
 
