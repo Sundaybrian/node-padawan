@@ -10,8 +10,9 @@ const About = () => {
             <ion-card-subtitle> version 1</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-            Massive club cast is a fullstack react / ionic app for managing
-            clubs in the digital space.Fan engangement like never before
+            Massive club cast is a fullstack react,ionic-angular with nodejs
+            mongodb backend, app for managing clubs in the digital space.Fan
+            engangement like never before
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -19,4 +20,4 @@ const About = () => {
   );
 };
 
-export default Aboion - row;
+export default About;
