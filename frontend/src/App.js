@@ -23,19 +23,23 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
-import { IonGrid } from "@ionic/react";
+import { IonGrid, IonPage, IonContent } from "@ionic/react";
 import "./App.css";
 
 const App = () => {
   return (
     <>
-      <Navbar title="Massive Fc" />
-      <IonGrid>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-        </Switch>
-      </IonGrid>
+      <IonPage>
+        <Navbar title="Massive Fc" />
+        <IonContent>
+          <IonGrid>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+            </Switch>
+          </IonGrid>
+        </IonContent>
+      </IonPage>
     </>
   );
 };
