@@ -21,26 +21,34 @@ const ArticleState = (props) => {
       {
         _id: 1,
         title: "lorem 1",
-        subititle: "lorem 2 sub",
+        subtitle: "lorem 2 sub",
         content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
+        imgUrl:
+          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
       },
       {
         _id: 2,
-        title: "lorem 1",
-        subititle: "lorem 2 sub",
+        title: "lorem 2",
+        subtitle: "lorem 2 sub",
         content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
+        imgUrl:
+          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
       },
       {
         _id: 3,
-        title: "lorem 1",
-        subititle: "lorem 2 sub",
+        title: "lorem 3",
+        subtitle: "lorem 2 sub",
         content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
+        imgUrl:
+          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
       },
       {
         _id: 4,
-        title: "lorem 1",
-        subititle: "lorem 2 sub",
+        title: "lorem 4",
+        subtitle: "lorem 2 sub",
         content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
+        imgUrl:
+          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
       },
     ],
     filteredArticles: [],

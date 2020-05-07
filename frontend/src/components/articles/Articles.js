@@ -17,17 +17,17 @@ import {
   IonCol,
 } from "@ionic/react";
 
-const Articles = () => {
-  const context = useContext(ArticleContext);
-  const { articles } = context;
-
+const Articles = ({ article }) => {
   return (
-    <>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore voluptas
-      dolores explicabo nostrum distinctio, accusantium suscipit quibusdam
-      assumenda veniam omnis neque cumque vel, eligendi culpa optio voluptate
-      consequatur, nisi corporis?
-    </>
+    <IonItem key={article.title} button>
+      <IonThumbnail slot="start">
+        <img src={article.imgUrl} />
+      </IonThumbnail>
+      <IonLabel>
+        <h2>{article.title}</h2>
+        <p>{article.subtitle}</p>
+      </IonLabel>
+    </IonItem>
   );
 };
 
