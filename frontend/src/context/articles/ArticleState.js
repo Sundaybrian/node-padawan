@@ -1,7 +1,9 @@
 import React, {useReducer} from "react";
 import axios from axios;
+import uuid from uuid;
 import ArticleContext from "./articleContext";
 import ArticleReducer from "./articleReducer";
+import { ADD_ARTICLE, DELETE_ARTICLE, UPDATE_ARTICLE, FILTER_ARTICLE, CLEAR_CURRENT, SET_CURRENT, SET_ALERT, REMOVE_ALERT} from "../types";
 
 const ArticleState = (props) => {
     const initialState = {
@@ -22,9 +24,15 @@ const ArticleState = (props) => {
 
     // Actions Below here
     // create article
+    const createArticle = (obj) => {
+        
+    }
     // update article
     // delete article
+    // set current article
+    // clear current article
     // filter article
+    // clear filter
     // search articles
 
     return <ArticleContext.provider 
