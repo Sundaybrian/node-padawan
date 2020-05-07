@@ -32,12 +32,10 @@ const App = () => {
       <IonPage>
         <Navbar title="Massive Fc" />
         <IonContent>
-          <IonGrid>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/about" component={About} />
-            </Switch>
-          </IonGrid>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+          </Switch>
         </IonContent>
       </IonPage>
     </>
