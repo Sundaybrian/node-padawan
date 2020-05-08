@@ -26,7 +26,11 @@ export default (state, action) => {
     case UPDATE_ARTICLE:
       return {
         ...state,
-        currentArticle: action.payload,
+        articles: state.articles.map((article) =>
+          // check if incoming aritcle matches the articles we have
+          // replace with the new article
+          article._id == action.payload._id ? action.payload : article
+        ),
       };
     case SET_CURRENT:
       return {

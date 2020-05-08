@@ -11,7 +11,7 @@ import ArticleContext from "../../context/articles/articleContext";
 
 const ArticleForm = () => {
   const context = useContext(ArticleContext);
-  const { currentArticle, createArticle, editArticle } = context;
+  const { currentArticle, createArticle, editArticle, clearCurrent } = context;
 
   useEffect(() => {
     // check for the exitense of currentArticle
@@ -46,7 +46,8 @@ const ArticleForm = () => {
     e.preventDefault();
     if (currentArticle) {
       // if currentarticle we are editing
-      editArticle(article._id);
+      editArticle(article);
+      clearCurrent();
     } else {
       // create a new article
       createArticle(article);
