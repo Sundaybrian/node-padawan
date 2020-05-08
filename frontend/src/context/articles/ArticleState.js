@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 // import axios from axios;
-import uuid from uuid;
+import { v4 } from "uuid";
 import ArticleContext from "./articleContext";
 import ArticleReducer from "./articleReducer";
 import {
@@ -61,10 +61,12 @@ const ArticleState = (props) => {
   // Actions Below here
   // create article
   const createArticle = (article) => {
-    article.id = uuid.v4()
+    // gen random id
+    article._id = v4();
+    // dispatching to the reducer to change state
     dispatch({
-      type:ADD_ARTICLE,
-      payload:article
+      type: ADD_ARTICLE,
+      payload: article,
     });
   };
   // update article

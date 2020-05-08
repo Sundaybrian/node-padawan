@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   IonList,
   IonItem,
@@ -7,23 +7,31 @@ import {
   IonListHeader,
   IonButton,
 } from "@ionic/react";
+import ArticleContext from "../../context/articles/articleContext";
 
 const ArticleForm = () => {
-  const [contact, setContact] = useState({
+  const context = useContext(ArticleContext);
+  const [article, setArticle] = useState({
     title: "",
     subtitle: "",
     content: "",
-    imageUrl: "",
+    imgUrl: "",
   });
 
-  const { title, subtitle, content, imageUrl } = contact;
+  const { title, subtitle, content, imgUrl } = article;
+
   const onChange = (e) => {
-    console.log(e, e.target.name);
-    setContact({ ...contact, [e.target.name]: e.target.value });
+    console.log(e.target.name);
+    setArticle({ ...article, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    context.createArticle(article);
   };
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <IonListHeader>
         <IonLabel>Create Article</IonLabel>
       </IonListHeader>
@@ -35,7 +43,7 @@ const ArticleForm = () => {
           name="title"
           required
           value={title}
-          onChange={onChange}
+          onIonChange={onChange}
         ></IonInput>
       </IonItem>
 
@@ -47,7 +55,7 @@ const ArticleForm = () => {
           name="subtitle"
           required
           value={subtitle}
-          onChange={onChange}
+          onIonChange={onChange}
         ></IonInput>
       </IonItem>
 
@@ -59,18 +67,18 @@ const ArticleForm = () => {
           name="content"
           required
           value={content}
-          onChange={onChange}
+          onIonChange={onChange}
         ></IonInput>
       </IonItem>
       <IonItem>
-        <IonLabel position="floating">Image</IonLabel>
+        <IonLabel position="floating">ImageUrl</IonLabel>
         <IonInput
           //   placeholder="enter article image"
           type="text"
-          name="imageUrl"
+          name="imgUrl"
           required
-          value={imageUrl}
-          onChange={onChange}
+          value={imgUrl}
+          onIonChange={onChange}
         ></IonInput>
       </IonItem>
       <IonButton type="submit" color="primary" fill="outline" expand="block">
