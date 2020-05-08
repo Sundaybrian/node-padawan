@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 // import axios from axios;
-// import uuid from uuid;
+import uuid from uuid;
 import ArticleContext from "./articleContext";
 import ArticleReducer from "./articleReducer";
 import {
@@ -60,7 +60,13 @@ const ArticleState = (props) => {
 
   // Actions Below here
   // create article
-  const createArticle = (obj) => {};
+  const createArticle = (article) => {
+    article.id = uuid.v4()
+    dispatch({
+      type:ADD_ARTICLE,
+      payload:article
+    });
+  };
   // update article
   // delete article
   // set current article
