@@ -52,7 +52,7 @@ const ArticleState = (props) => {
       },
     ],
     filteredArticles: [],
-    article: null,
+    currentArticle: null,
     loading: false,
   };
 
@@ -69,7 +69,14 @@ const ArticleState = (props) => {
       payload: article,
     });
   };
+
   // update article
+  const editArticle = (article) => {
+    dispatch({
+      type: UPDATE_ARTICLE,
+      payload: article,
+    });
+  };
 
   // delete article
   const deleteArticle = (id) => {
@@ -89,10 +96,11 @@ const ArticleState = (props) => {
       value={{
         articles: state.articles,
         filteredArticles: state.filteredArticles,
-        article: state.article,
+        currentArticle: state.currentArticle,
         loading: state.loading,
         createArticle,
         deleteArticle,
+        editArticle,
       }}
     >
       {props.children}

@@ -23,6 +23,11 @@ export default (state, action) => {
           ...state.articles.filter((article) => article._id != action.payload),
         ],
       };
+    case UPDATE_ARTICLE:
+      return {
+        ...state,
+        currentArticle: action.payload,
+      };
     default:
       return state;
   }
