@@ -11,7 +11,7 @@ import { trashBinOutline, pencilOutline } from "ionicons/icons";
 
 const ArticleItem = ({ article }) => {
   const context = useContext(ArticleContext);
-  const { deleteArticle, editArticle } = context;
+  const { deleteArticle, setCurrent } = context;
 
   const onDelete = () => {
     // pass article id
@@ -19,7 +19,7 @@ const ArticleItem = ({ article }) => {
   };
 
   const onEdit = () => {
-    editArticle(article);
+    setCurrent(article);
   };
 
   return (
