@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import ArticleContext from "../../context/articles/articleContext";
 import {
   IonItem,
   IonThumbnail,
@@ -9,6 +10,14 @@ import {
 import { trashBinOutline, pencilOutline } from "ionicons/icons";
 
 const ArticleItem = ({ article }) => {
+  const context = useContext(ArticleContext);
+  const { deleteArticle } = context;
+
+  const onDelete = () => {
+    // pass article id
+    deleteArticle(article._id);
+  };
+
   return (
     <IonItem key={article.title} button>
       <IonThumbnail slot="start">
@@ -18,7 +27,7 @@ const ArticleItem = ({ article }) => {
         <h2>{article.title}</h2>
         <p>{article.subtitle}</p>
       </IonLabel>
-      <IonButton slot="end">
+      <IonButton slot="end" onClick={onDelete}>
         <IonIcon slot="icon-only" icon={trashBinOutline} />
       </IonButton>
       <IonButton slot="end">
