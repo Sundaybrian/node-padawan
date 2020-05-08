@@ -28,6 +28,16 @@ export default (state, action) => {
         ...state,
         currentArticle: action.payload,
       };
+    case SET_CURRENT:
+      return {
+        ...state,
+        currentArticle: action.payload,
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        currentArticle: null,
+      };
     default:
       return state;
   }
