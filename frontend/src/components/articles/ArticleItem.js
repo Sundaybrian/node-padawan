@@ -18,6 +18,10 @@ const ArticleItem = ({ article }) => {
     deleteArticle(article._id);
   };
 
+  const onEdit = () => {
+    editArticle(article);
+  };
+
   return (
     <IonItem key={article.title} button>
       <IonThumbnail slot="start">
@@ -30,7 +34,7 @@ const ArticleItem = ({ article }) => {
       <IonButton slot="end" onClick={onDelete}>
         <IonIcon slot="icon-only" icon={trashBinOutline} />
       </IonButton>
-      <IonButton slot="end">
+      <IonButton slot="end" onClick={onEdit}>
         <IonIcon slot="icon-only" icon={pencilOutline} />
       </IonButton>
     </IonItem>
