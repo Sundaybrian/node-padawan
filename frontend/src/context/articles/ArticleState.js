@@ -82,6 +82,7 @@ const ArticleState = (props) => {
         filteredArticles: state.filteredArticles,
         article: state.article,
         loading: state.loading,
+        createArticle,
       }}
     >
       {props.children}
