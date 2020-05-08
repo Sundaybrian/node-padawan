@@ -118,11 +118,23 @@ const ArticleForm = () => {
       <IonButton
         type="submit"
         color={currentArticle ? "secondary" : "primary"}
-        fill="outline"
+        fill={currentArticle ? "outline" : "solid"}
         expand="block"
       >
         {currentArticle ? "Edit Article" : "Create Article"}
       </IonButton>
+      {/*  conditonally render the clear current button */}
+      {currentArticle && (
+        <IonButton
+          type="button"
+          color={currentArticle ? "tertiary" : "primary"}
+          expand="block"
+          fill="solid"
+          onClick={() => clearCurrent()}
+        >
+          Clear Current
+        </IonButton>
+      )}
     </form>
   );
 };
