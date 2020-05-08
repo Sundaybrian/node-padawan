@@ -11,7 +11,22 @@ import ArticleContext from "../../context/articles/articleContext";
 
 const ArticleForm = () => {
   const context = useContext(ArticleContext);
-  const { currentArticle } = context;
+  const { currentArticle, createArticle } = context;
+
+  useEffect(() => {
+    // check for the exitense of currentArticle
+    if (currentArticle !== null) {
+      setArticle(currentArticle);
+    } else {
+      // set to default state
+      setArticle({
+        title: "",
+        subtitle: "",
+        content: "",
+        imgUrl: "",
+      });
+    }
+  }, [ArticleContext, currentArticle]);
 
   const [article, setArticle] = useState({
     title: "",
@@ -19,13 +34,6 @@ const ArticleForm = () => {
     content: "",
     imgUrl: "",
   });
-
-  useEffect(() => {
-    // check for the exitense of currentArticle
-    if (currentArticle !== null) {
-      setArticle(currentArticle);
-    }
-  }, []);
 
   const { title, subtitle, content, imgUrl } = article;
 
@@ -36,7 +44,7 @@ const ArticleForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    context.createArticle(article);
+    createArticle(article);
     // empty form after submit
     setArticle({
       title: "",
