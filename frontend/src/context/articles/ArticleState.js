@@ -70,7 +70,14 @@ const ArticleState = (props) => {
     });
   };
   // update article
+
   // delete article
+  const deleteArticle = (id) => {
+    dispatch({
+      type: DELETE_ARTICLE,
+      payload: id,
+    });
+  };
   // set current article
   // clear current article
   // filter article
@@ -85,6 +92,7 @@ const ArticleState = (props) => {
         article: state.article,
         loading: state.loading,
         createArticle,
+        deleteArticle,
       }}
     >
       {props.children}
