@@ -28,6 +28,13 @@ const ArticleForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     context.createArticle(article);
+    // empty form after submit
+    setArticle({
+      title: "",
+      subtitle: "",
+      content: "",
+      imgUrl: "",
+    });
   };
 
   return (
