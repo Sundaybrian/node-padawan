@@ -11,7 +11,7 @@ import ArticleContext from "../../context/articles/articleContext";
 
 const ArticleForm = () => {
   const context = useContext(ArticleContext);
-  const { currentArticle, createArticle } = context;
+  const { currentArticle, createArticle, editArticle } = context;
 
   useEffect(() => {
     // check for the exitense of currentArticle
@@ -44,7 +44,13 @@ const ArticleForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createArticle(article);
+    if (currentArticle) {
+      // if currentarticle we are editing
+      editArticle(article._id);
+    } else {
+      // create a new article
+      createArticle(article);
+    }
     // empty form after submit
     setArticle({
       title: "",
@@ -57,7 +63,10 @@ const ArticleForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <IonListHeader>
-        <IonLabel>Create Article</IonLabel>
+        <IonLabel>
+          {" "}
+          {currentArticle ? "Edit Article" : "Create Article"}
+        </IonLabel>
       </IonListHeader>
       <IonItem>
         <IonLabel position="floating">Title</IonLabel>
@@ -105,8 +114,13 @@ const ArticleForm = () => {
           onIonChange={onChange}
         ></IonInput>
       </IonItem>
-      <IonButton type="submit" color="primary" fill="outline" expand="block">
-        Create Article
+      <IonButton
+        type="submit"
+        color={currentArticle ? "secondary" : "primary"}
+        fill="outline"
+        expand="block"
+      >
+        {currentArticle ? "Edit Article" : "Create Article"}
       </IonButton>
     </form>
   );
