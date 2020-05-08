@@ -71,7 +71,7 @@ const ArticleState = (props) => {
   };
 
   // update article
-  const editArticle = (article) => {
+  const editArticle = (id) => {
     dispatch({
       type: UPDATE_ARTICLE,
       payload: article,
@@ -85,8 +85,20 @@ const ArticleState = (props) => {
       payload: id,
     });
   };
+
   // set current article
+  const setCurrent = (article) => {
+    dispatch({
+      type: SET_CURRENT,
+      payload: article,
+    });
+  };
   // clear current article
+  const clearCurrent = (article) => {
+    dispatch({
+      type: CLEAR_CURRENT,
+    });
+  };
   // filter article
   // clear filter
   // search articles
@@ -101,6 +113,8 @@ const ArticleState = (props) => {
         createArticle,
         deleteArticle,
         editArticle,
+        setCurrent,
+        clearCurrent,
       }}
     >
       {props.children}

@@ -11,7 +11,7 @@ import { trashBinOutline, pencilOutline } from "ionicons/icons";
 
 const ArticleItem = ({ article }) => {
   const context = useContext(ArticleContext);
-  const { deleteArticle } = context;
+  const { deleteArticle, editArticle } = context;
 
   const onDelete = () => {
     // pass article id

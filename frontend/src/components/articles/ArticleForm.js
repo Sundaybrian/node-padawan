@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   IonList,
   IonItem,
@@ -11,12 +11,21 @@ import ArticleContext from "../../context/articles/articleContext";
 
 const ArticleForm = () => {
   const context = useContext(ArticleContext);
+  const { currentArticle } = context;
+
   const [article, setArticle] = useState({
     title: "",
     subtitle: "",
     content: "",
     imgUrl: "",
   });
+
+  useEffect(() => {
+    // check for the exitense of currentArticle
+    if (currentArticle !== null) {
+      setArticle(currentArticle);
+    }
+  }, []);
 
   const { title, subtitle, content, imgUrl } = article;
 
