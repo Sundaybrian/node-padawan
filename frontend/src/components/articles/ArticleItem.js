@@ -1,5 +1,12 @@
 import React from "react";
-import { IonItem, IonThumbnail, IonLabel } from "@ionic/react";
+import {
+  IonItem,
+  IonThumbnail,
+  IonLabel,
+  IonIcon,
+  IonButton,
+} from "@ionic/react";
+import { trashBinOutline, pencilOutline } from "ionicons/icons";
 
 const ArticleItem = ({ article }) => {
   return (
@@ -11,6 +18,12 @@ const ArticleItem = ({ article }) => {
         <h2>{article.title}</h2>
         <p>{article.subtitle}</p>
       </IonLabel>
+      <IonButton slot="end">
+        <IonIcon slot="icon-only" icon={trashBinOutline} />
+      </IonButton>
+      <IonButton slot="end">
+        <IonIcon slot="icon-only" icon={pencilOutline} />
+      </IonButton>
     </IonItem>
   );
 };
