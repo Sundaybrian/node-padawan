@@ -74,7 +74,7 @@ const ArticleState = (props) => {
   const editArticle = (id) => {
     dispatch({
       type: UPDATE_ARTICLE,
-      payload: article,
+      payload: id,
     });
   };
 

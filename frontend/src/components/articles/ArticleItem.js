@@ -11,11 +11,13 @@ import { trashBinOutline, pencilOutline } from "ionicons/icons";
 
 const ArticleItem = ({ article }) => {
   const context = useContext(ArticleContext);
-  const { deleteArticle, setCurrent } = context;
+  const { deleteArticle, setCurrent, clearCurrent } = context;
 
   const onDelete = () => {
     // pass article id
     deleteArticle(article._id);
+    // clear the currentarticle
+    clearCurrent();
   };
 
   const onEdit = () => {
