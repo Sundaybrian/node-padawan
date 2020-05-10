@@ -51,7 +51,7 @@ const ArticleState = (props) => {
           "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
       },
     ],
-    filteredArticles: [],
+    filteredArticles: null,
     currentArticle: null,
     loading: false,
   };
@@ -127,6 +127,8 @@ const ArticleState = (props) => {
         editArticle,
         setCurrent,
         clearCurrent,
+        filterArticle,
+        clearArticle,
       }}
     >
       {props.children}

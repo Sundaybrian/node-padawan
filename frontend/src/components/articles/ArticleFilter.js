@@ -15,8 +15,8 @@ const ArticleFilter = () => {
     <form>
       <IonList>
         <IonItem>
-          <IonLabel position="floating">Search</IonLabel>
-          <IonInput onIonChange={onChange} ref={query} type="text"></IonInput>
+          <IonLabel position="floating">Search...</IonLabel>
+          <IonInput onIonChange={onChange} name="query" type="text"></IonInput>
         </IonItem>
       </IonList>
     </form>
