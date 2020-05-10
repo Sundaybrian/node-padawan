@@ -42,6 +42,15 @@ export default (state, action) => {
         ...state,
         currentArticle: null,
       };
+    case FILTER_ARTICLE:
+      return {
+        ...state,
+        filteredArticles: state.articles.filter((article) => {
+          // return all title case insensitive that match the query
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return article.title.match(regex);
+        }),
+      };
     default:
       return state;
   }

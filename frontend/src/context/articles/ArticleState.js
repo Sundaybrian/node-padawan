@@ -99,8 +99,20 @@ const ArticleState = (props) => {
       type: CLEAR_CURRENT,
     });
   };
+
   // filter article
+  const filterArticle = (query) => {
+    dispatch({
+      type: FILTER_ARTICLE,
+      payload: query,
+    });
+  };
   // clear filter
+  const clearArticle = () => {
+    dispatch({
+      type: CLEAR_CURRENT,
+    });
+  };
   // search articles
 
   return (
