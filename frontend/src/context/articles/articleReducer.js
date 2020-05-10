@@ -7,6 +7,7 @@ import {
   SET_CURRENT,
   SET_ALERT,
   REMOVE_ALERT,
+  CLEAR_FILTER,
 } from "../types";
 
 export default (state, action) => {
@@ -50,6 +51,11 @@ export default (state, action) => {
           const regex = new RegExp(`${action.payload}`, "gi");
           return article.title.match(regex);
         }),
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filteredArticles: null,
       };
     default:
       return state;
