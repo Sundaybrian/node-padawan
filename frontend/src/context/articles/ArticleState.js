@@ -12,6 +12,7 @@ import {
   SET_CURRENT,
   SET_ALERT,
   REMOVE_ALERT,
+  CLEAR_FILTER,
 } from "../types";
 
 const ArticleState = (props) => {
@@ -110,7 +111,7 @@ const ArticleState = (props) => {
   // clear filter
   const clearArticle = () => {
     dispatch({
-      type: CLEAR_CURRENT,
+      type: CLEAR_FILTER,
     });
   };
   // search articles

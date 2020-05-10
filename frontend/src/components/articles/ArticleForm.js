@@ -38,7 +38,6 @@ const ArticleForm = () => {
   const { title, subtitle, content, imgUrl } = article;
 
   const onChange = (e) => {
-    console.log(e.target.name);
     setArticle({ ...article, [e.target.name]: e.target.value });
   };
 

@@ -4,11 +4,24 @@ import { IonList, IonItem, IonLabel, IonInput } from "@ionic/react";
 
 const ArticleFilter = () => {
   const context = useContext(ArticleContext);
-  const { filterArticle } = context;
+  const { filterArticle, clearArticle, filteredArticles } = context;
+  const query = useRef("");
+
+  useEffect(() => {
+    // set query to empty if not filtered array
+
+    if (filteredArticles === null) {
+      query.current.value = "";
+    }
+  });
 
   const onChange = (e) => {
-    // call filterArticle
-    filterArticle(e.target.value);
+    if (query.current.value !== "") {
+      filterArticle(e.target.value);
+    } else {
+      // if no search empty the filteredArticles array
+      clearArticle();
+    }
   };
 
   return (
@@ -16,7 +29,12 @@ const ArticleFilter = () => {
       <IonList>
         <IonItem>
           <IonLabel position="floating">Search...</IonLabel>
-          <IonInput onIonChange={onChange} name="query" type="text"></IonInput>
+          <IonInput
+            onIonChange={onChange}
+            name="query"
+            ref={query}
+            type="text"
+          ></IonInput>
         </IonItem>
       </IonList>
     </form>
