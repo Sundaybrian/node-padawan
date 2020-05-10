@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ArticleContext from "../../context/articles/articleContext";
 import ArticleItem from "./ArticleItem";
 import {
@@ -20,15 +20,20 @@ import {
 
 const Articles = () => {
   const context = useContext(ArticleContext);
-  const { articles } = context;
+  const { articles, filteredArticles } = context;
+
   return (
     <IonList>
       <IonListHeader>
         <IonLabel>Articles</IonLabel>
       </IonListHeader>
-      {articles.map((article) => (
-        <ArticleItem key={article.id} article={article} />
-      ))}
+      {filteredArticles !== null
+        ? filteredArticles.map((article) => (
+            <ArticleItem key={article.id} article={article} />
+          ))
+        : articles.map((article) => (
+            <ArticleItem key={article.id} article={article} />
+          ))}
     </IonList>
   );
 };
