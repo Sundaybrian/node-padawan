@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import AuthContenxt from "../../context/auth/authContext";
+import AlertContext from "../../context/alert/alertContext";
+
 import {
   IonGrid,
   IonRow,
@@ -14,7 +16,10 @@ import {
 
 const Register = () => {
   const context = useContext(AuthContenxt);
+  const alertContext = useContext(AlertContext);
   const {} = context;
+  const { setAlert } = alertContext;
+
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -31,6 +36,9 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log("registered");
+
+    setAlert("Name cannot be empty", "danger");
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import AlertContext from "../context/alert/alertContext";
-import {} from "@ionic/react";
+import { IonToast } from "@ionic/react";
 
 const Alerts = () => {
   const context = useContext(AlertContext);

@@ -27,6 +27,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import { IonGrid, IonPage, IonContent } from "@ionic/react";
 import "./App.css";
+import Alerts from "./components/Alerts";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
       <IonPage>
         <Navbar title="Massive Fc" />
         <IonContent>
+          <Alerts />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
