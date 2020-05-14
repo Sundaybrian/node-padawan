@@ -4,15 +4,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import ArticleState from "./context/articles/ArticleState";
+import AuthState from "./context/auth/AuthState";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ArticleState>
-      <Router>
-        <App />
-      </Router>
-    </ArticleState>
+    <AuthState>
+      <ArticleState>
+        <Router>
+          <App />
+        </Router>
+      </ArticleState>
+    </AuthState>
   </React.StrictMode>,
   document.getElementById("root")
 );
