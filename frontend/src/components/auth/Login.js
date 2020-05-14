@@ -7,6 +7,8 @@ import {
   IonLabel,
   IonInput,
   IonButton,
+  IonCol,
+  IonList,
 } from "@ionic/react";
 
 const Login = () => {
@@ -38,7 +40,7 @@ const Login = () => {
                   type="email"
                   required
                   name="email"
-                  value={email}
+                  value={user.email}
                   onIonChange={onChange}
                 ></IonInput>
               </IonItem>
@@ -48,7 +50,7 @@ const Login = () => {
                   type="password"
                   required
                   name="password"
-                  value={password}
+                  value={user.password}
                   onIonChange={onChange}
                 ></IonInput>
               </IonItem>
