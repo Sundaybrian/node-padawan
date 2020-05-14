@@ -26,12 +26,11 @@ const Navbar = ({ title }) => {
         </IonButton>
       </IonButtons>
       <IonButtons slot="primary">
-        <IonButton color="primary">
-          <IonIcon
-            slot="icon-only"
-            ios="ellipsis-horizontal"
-            md="ellipsis-vertical"
-          />
+        <IonButton color="light" href="/register">
+          Register
+        </IonButton>
+        <IonButton color="light" href="/login">
+          Login
         </IonButton>
       </IonButtons>
       <IonTitle>{title}</IonTitle>

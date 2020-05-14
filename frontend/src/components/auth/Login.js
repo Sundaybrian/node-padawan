@@ -9,6 +9,7 @@ import {
   IonButton,
   IonCol,
   IonList,
+  IonListHeader,
 } from "@ionic/react";
 
 const Login = () => {
@@ -34,6 +35,9 @@ const Login = () => {
         <IonRow>
           <IonCol size-sm="6" offset-sm="3">
             <IonList>
+              <IonListHeader>
+                <h2>Login</h2>
+              </IonListHeader>
               <IonItem>
                 <IonLabel position="floating">Email</IonLabel>
                 <IonInput
