@@ -6,14 +6,17 @@ import App from "./App";
 import ArticleState from "./context/articles/ArticleState";
 import AuthState from "./context/auth/AuthState";
 import * as serviceWorker from "./serviceWorker";
+import AlertState from "./context/alert/AlertState";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthState>
       <ArticleState>
-        <Router>
-          <App />
-        </Router>
+        <AlertState>
+          <Router>
+            <App />
+          </Router>
+        </AlertState>
       </ArticleState>
     </AuthState>
   </React.StrictMode>,
