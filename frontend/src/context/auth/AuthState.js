@@ -13,7 +13,7 @@ import {
 } from "../types";
 
 const AuthState = (props) => {
-  const intialState = {
+  const initialState = {
     user: null,
     token: localStorage.getItem("token"),
     isAuthenticated: null,

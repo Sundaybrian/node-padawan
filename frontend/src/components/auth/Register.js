@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import {} from "@ionic/reacti";
 import AuthContenxt from "../../context/auth/authContext";
 import {
   IonGrid,
@@ -8,6 +7,8 @@ import {
   IonLabel,
   IonInput,
   IonButton,
+  IonCol,
+  IonList,
 } from "@ionic/react";
 
 const Register = () => {
@@ -19,6 +20,9 @@ const Register = () => {
     password: "",
     password2: "",
   });
+
+  // destructure from state
+  const { username, email, password2, password } = user;
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
