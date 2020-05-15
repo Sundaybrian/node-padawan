@@ -15,9 +15,10 @@ import {
 } from "@ionic/react";
 
 const Register = () => {
-  const context = useContext(AuthContenxt);
+  const authContext = useContext(AuthContenxt);
   const alertContext = useContext(AlertContext);
-  const {} = context;
+
+  const { register } = authContext;
   const { setAlert } = alertContext;
 
   const [user, setUser] = useState({
@@ -36,9 +37,16 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("registered");
-
-    setAlert("Name cannot be empty", "danger");
+    if (password !== password2) {
+      setAlert("Passwords must match", "danger");
+    } else {
+      // register user
+      register({
+        name: username,
+        email,
+        password,
+      });
+    }
   };
 
   return (
