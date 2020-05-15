@@ -46,8 +46,6 @@ const Register = () => {
         email,
         password,
       });
-
-      console.log("registered");
     }
   };
 

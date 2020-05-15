@@ -35,6 +35,7 @@ const AuthState = (props) => {
 
     try {
       const res = await axios.post("/api/users/register", formData, config);
+      console.log(res);
 
       // on success registration return token in payload
       dispatch({
@@ -54,6 +55,11 @@ const AuthState = (props) => {
   // logout
 
   // clear errors
+  const clearErrors = () => {
+    dispatch({
+      type: CLEAR_ERRORS,
+    });
+  };
 
   return (
     <AuthContext.Provider
@@ -64,6 +70,7 @@ const AuthState = (props) => {
         isAuthenticated: state.isAuthenticated,
         error: state.error,
         register,
+        clearErrors,
       }}
     >
       {props.children}
