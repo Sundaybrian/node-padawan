@@ -26,22 +26,23 @@ router.post(
     if (!errors.isEmpty())
       return res.status(400).json({ errors: errors.array() });
 
-    // check if useremail exists on the db
-    const exists = await User.findOne({ email: req.body.email });
-    if (exists) return res.status(400).json({ msg: "Email already exists" });
-
-    // hashing password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-    // create user instance
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-    });
-
     try {
+      // check if useremail exists on the db
+      const exists = await User.findOne({ email: req.body.email });
+      if (exists) {
+        return res.status(400).json({ msg: "Email already exists" });
+      }
+
+      // hashing password
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+      // create user instance
+      const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: hashedPassword,
+      });
       // save to mongodb
       // TODO all more metadata to the user e.g type, club
       const savedUser = await user.save();
@@ -62,8 +63,8 @@ router.post(
         }
       );
     } catch (error) {
-      console.error(error.message);
-      res.status(400).send(error);
+      console.error(error);
+      res.status(400).json({ msg: "Server Error" });
     }
   }
 );

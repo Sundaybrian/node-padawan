@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import AlertContext from "../context/alert/alertContext";
-import { IonToast } from "@ionic/react";
+import { IonToast, IonCol, IonContent } from "@ionic/react";
 
 const Alerts = () => {
   const context = useContext(AlertContext);
@@ -10,7 +10,7 @@ const Alerts = () => {
     alerts.map((alert) => (
       <IonToast
         key={alert.id}
-        // isOpen={showToast2}
+        isOpen={alerts.length > 0 ? true : false}
         // onDidDismiss={() => setShowToast2(false)}
         message={alert.msg}
         position="top"
