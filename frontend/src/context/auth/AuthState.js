@@ -23,7 +23,21 @@ const AuthState = (props) => {
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-  // loading
+  // load user
+  const loadUser = async () => {
+    try {
+      const res = await axios.get("/api/auth/current-user");
+
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: AUTH_ERROR,
+      });
+    }
+  };
 
   // register
   const register = async (formData) => {
@@ -43,8 +57,6 @@ const AuthState = (props) => {
         payload: res.data,
       });
     } catch (error) {
-      console.log(error);
-
       dispatch({
         type: REGISTER_FAIL,
         payload: error.response.data.msg,
