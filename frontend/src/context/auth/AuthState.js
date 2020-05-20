@@ -12,6 +12,7 @@ import {
   CLEAR_ERRORS,
   LOGOUT,
 } from "../types";
+import setAuthToken from "../../utils/setAuthToken";
 
 const AuthState = (props) => {
   const initialState = {
@@ -25,6 +26,10 @@ const AuthState = (props) => {
 
   // load user
   const loadUser = async () => {
+    // setting the token to the headers
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
     try {
       const res = await axios.get("/api/auth/current-user");
 
@@ -56,6 +61,8 @@ const AuthState = (props) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
+
+      loadUser();
     } catch (error) {
       dispatch({
         type: REGISTER_FAIL,

@@ -28,6 +28,12 @@ import Login from "./components/auth/Login";
 import { IonGrid, IonPage, IonContent } from "@ionic/react";
 import "./App.css";
 import Alerts from "./components/Alerts";
+import setAuthToken from "./utils/setAuthToken";
+
+// setting the token
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   return (
