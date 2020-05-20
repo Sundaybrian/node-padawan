@@ -14,21 +14,25 @@ import {
   IonListHeader,
 } from "@ionic/react";
 
-const Register = () => {
+const Register = (props) => {
   const authContext = useContext(AuthContenxt);
   const alertContext = useContext(AlertContext);
 
-  const { register, error, clearErrors } = authContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
   const { setAlert } = alertContext;
 
   useEffect(() => {
+    if (isAuthenticated) {
+      // redirect to home page on succesfull registration
+      props.history.push("/");
+    }
     // check if state has error then call setalert
     if (error) {
       setAlert(error, "danger");
       // remove the errors
       clearErrors();
     }
-  }, [error]);
+  }, [error, isAuthenticated, props.history]);
 
   const [user, setUser] = useState({
     username: "",

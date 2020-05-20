@@ -62,6 +62,7 @@ const AuthState = (props) => {
         payload: res.data,
       });
 
+      // set user data to state,and token to the headers
       loadUser();
     } catch (error) {
       dispatch({
