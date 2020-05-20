@@ -10,6 +10,7 @@ const Home = () => {
 
   useEffect(() => {
     context.loadUser();
+    console.log("raaan");
   }, []);
   return (
     <IonGrid>
