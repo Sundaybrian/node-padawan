@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import AuthContenxt from "../../context/auth/authContext";
+import AlertContext from "../../context/alert/alertContext";
 import {
   IonGrid,
   IonRow,
@@ -12,13 +13,30 @@ import {
   IonListHeader,
 } from "@ionic/react";
 
-const Login = () => {
+const Login = (props) => {
   const context = useContext(AuthContenxt);
-  const {} = context;
+  const alertContext = useContext(AlertContext);
+
+  const { setAlert } = alertContext;
+  const { login, clearErrors, error, isAuthenticated } = context;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/");
+    }
+
+    if (error) {
+      setAlert(error, "danger");
+      clearErrors();
+    }
+  }, [error, isAuthenticated, props.history]);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+
+  const { email, password } = user;
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -26,6 +44,10 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    login({
+      email,
+      password,
+    });
   };
 
   return (

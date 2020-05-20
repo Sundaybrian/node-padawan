@@ -74,8 +74,14 @@ const AuthState = (props) => {
 
   // login
   const login = async (formData) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
     try {
-      const res = await axios.post("/api/auth/login");
+      const res = await axios.post("/api/auth/login", formData, config);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
@@ -110,6 +116,7 @@ const AuthState = (props) => {
         register,
         clearErrors,
         loadUser,
+        login,
       }}
     >
       {props.children}
