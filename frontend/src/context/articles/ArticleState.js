@@ -95,7 +95,7 @@ const ArticleState = (props) => {
     });
   };
   // clear current article
-  const clearCurrent = (article) => {
+  const clearCurrent = () => {
     dispatch({
       type: CLEAR_CURRENT,
     });

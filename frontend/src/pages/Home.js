@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ArticleForm from "../components/articles/ArticleForm";
 import { IonGrid, IonRow, IonCol } from "@ionic/react";
 import Articles from "../components/articles/Articles";
 import ArticleFilter from "../components/articles/ArticleFilter";
+import AuthContext from "../context/auth/authContext";
 
 const Home = () => {
+  const context = useContext(AuthContext);
+
+  useEffect(() => {
+    context.loadUser();
+  }, []);
   return (
     <IonGrid>
       <IonRow>
