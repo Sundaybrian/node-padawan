@@ -17,3 +17,4 @@ export const LOGOUT = "LOGOUT";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const CONTACT_ERROR = "CONTACT_ERROR";
 export const LOAD_ARTICLES = "LOAD_ARTICLES";
+export const CLEAR_ARTICLES = "CLEAR_ARTICLES";

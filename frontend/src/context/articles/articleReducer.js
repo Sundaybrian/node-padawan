@@ -10,6 +10,7 @@ import {
   CLEAR_FILTER,
   CONTACT_ERROR,
   LOAD_ARTICLES,
+  CLEAR_ARTICLES,
 } from "../types";
 
 export default (state, action) => {
@@ -19,6 +20,13 @@ export default (state, action) => {
         ...state,
         articles: action.payload,
         loading: false,
+      };
+    case CLEAR_ARTICLES:
+      return {
+        ...state,
+        articles: null,
+        filteredArticles: null,
+        currentArticle: null,
       };
     case ADD_ARTICLE:
       return {

@@ -15,6 +15,7 @@ import {
   CLEAR_FILTER,
   CONTACT_ERROR,
   LOAD_ARTICLES,
+  CLEAR_ARTICLES,
 } from "../types";
 import axios from "axios";
 
@@ -46,6 +47,12 @@ const ArticleState = (props) => {
         payload: error.response.msg,
       });
     }
+  };
+
+  const clearArticles = () => {
+    dispatch({
+      type: CLEAR_ARTICLES,
+    });
   };
 
   // create article
