@@ -14,6 +14,7 @@ import {
   REMOVE_ALERT,
   CLEAR_FILTER,
   CONTACT_ERROR,
+  LOAD_ARTICLES,
 } from "../types";
 import axios from "axios";
 
@@ -57,11 +58,29 @@ const ArticleState = (props) => {
     filteredArticles: null,
     currentArticle: null,
     loading: false,
+    error: null,
   };
 
   const [state, dispatch] = useReducer(ArticleReducer, initialState);
 
   // Actions Below here
+  // get articles
+  const loadArticles = async () => {
+    try {
+      // fetch articles
+      const res = await axios.get("/api/articles");
+      dispatch({
+        type: LOAD_ARTICLES,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: error.response.msg,
+      });
+    }
+  };
+
   // create article
   const createArticle = async (article) => {
     const config = {
@@ -136,6 +155,8 @@ const ArticleState = (props) => {
         filteredArticles: state.filteredArticles,
         currentArticle: state.currentArticle,
         loading: state.loading,
+        error: state.loading,
+        loadArticles,
         createArticle,
         deleteArticle,
         editArticle,
