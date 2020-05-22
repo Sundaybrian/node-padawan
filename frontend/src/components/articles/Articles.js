@@ -24,9 +24,13 @@ const Articles = () => {
   const { articles, filteredArticles, loadArticles, loading } = context;
 
   useEffect(() => {
-    // add articles to state
+    // add articles to state on component mountS
     loadArticles();
   }, []);
+
+  if (contacts !== null && contacts.length == 0 && !loading) {
+    <IonLabel>Please add a contact</IonLabel>;
+  }
 
   return (
     <IonList>

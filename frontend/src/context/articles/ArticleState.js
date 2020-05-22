@@ -21,40 +21,7 @@ import axios from "axios";
 const ArticleState = (props) => {
   const initialState = {
     // use dummy articles for now
-    articles: [
-      {
-        _id: 1,
-        title: "lorem 1",
-        subtitle: "lorem 2 sub",
-        content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
-        imgUrl:
-          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
-      },
-      {
-        _id: 2,
-        title: "lorem 2",
-        subtitle: "lorem 2 sub",
-        content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
-        imgUrl:
-          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
-      },
-      {
-        _id: 3,
-        title: "lorem 3",
-        subtitle: "lorem 2 sub",
-        content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
-        imgUrl:
-          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
-      },
-      {
-        _id: 4,
-        title: "lorem 4",
-        subtitle: "lorem 2 sub",
-        content: "lorem lorem dfkjdbfkjskfhskdhfjkjsfjk",
-        imgUrl:
-          "https://media.gettyimages.com/photos/pierreemerick-aubameyang-of-arsenal-and-team-mates-granit-xhaka-and-picture-id1174851873?s=612x612",
-      },
-    ],
+    articles: null,
     filteredArticles: null,
     currentArticle: null,
     loading: false,
