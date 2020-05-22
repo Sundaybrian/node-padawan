@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import ArticleContext from "../../context/articles/articleContext";
 import ArticleItem from "./ArticleItem";
+import Spinner from "../layout/Spinner";
 import {
   IonCardHeader,
   IonCardContent,
@@ -20,7 +21,7 @@ import {
 
 const Articles = () => {
   const context = useContext(ArticleContext);
-  const { articles, filteredArticles, loadArticles } = context;
+  const { articles, filteredArticles, loadArticles, loading } = context;
 
   useEffect(() => {
     // add articles to state
@@ -32,13 +33,19 @@ const Articles = () => {
       <IonListHeader>
         <IonLabel>Articles</IonLabel>
       </IonListHeader>
-      {filteredArticles !== null
-        ? filteredArticles.map((article) => (
-            <ArticleItem key={article.id} article={article} />
-          ))
-        : articles.map((article) => (
-            <ArticleItem key={article.id} article={article} />
-          ))}
+      {articles !== null && !loading ? (
+        <>
+          {filteredArticles !== null
+            ? filteredArticles.map((article) => (
+                <ArticleItem key={article.id} article={article} />
+              ))
+            : articles.map((article) => (
+                <ArticleItem key={article.id} article={article} />
+              ))}
+        </>
+      ) : (
+        <Spinner />
+      )}
     </IonList>
   );
 };
