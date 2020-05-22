@@ -29,6 +29,7 @@ import { IonGrid, IonPage, IonContent } from "@ionic/react";
 import "./App.css";
 import Alerts from "./components/Alerts";
 import setAuthToken from "./utils/setAuthToken";
+import PrivateRoute from "./routing/PrivateRoute";
 
 // setting the token
 if (localStorage.token) {
@@ -43,7 +44,7 @@ const App = () => {
         <IonContent>
           <Alerts />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <PrivateRoute exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/about" component={About} />

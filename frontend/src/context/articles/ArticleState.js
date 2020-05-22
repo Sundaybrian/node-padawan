@@ -13,7 +13,9 @@ import {
   SET_ALERT,
   REMOVE_ALERT,
   CLEAR_FILTER,
+  CONTACT_ERROR,
 } from "../types";
+import axios from "axios";
 
 const ArticleState = (props) => {
   const initialState = {
@@ -61,14 +63,25 @@ const ArticleState = (props) => {
 
   // Actions Below here
   // create article
-  const createArticle = (article) => {
-    // gen random id
-    article._id = v4();
-    // dispatching to the reducer to change state
-    dispatch({
-      type: ADD_ARTICLE,
-      payload: article,
-    });
+  const createArticle = async (article) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/api/articles/", article, config);
+      // dispatching to the reducer to change state
+      dispatch({
+        type: ADD_ARTICLE,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: error.response.msg,
+      });
+    }
   };
 
   // update article
