@@ -20,7 +20,12 @@ import {
 
 const Articles = () => {
   const context = useContext(ArticleContext);
-  const { articles, filteredArticles } = context;
+  const { articles, filteredArticles, loadArticles } = context;
+
+  useEffect(() => {
+    // add articles to state
+    loadArticles();
+  }, []);
 
   return (
     <IonList>
