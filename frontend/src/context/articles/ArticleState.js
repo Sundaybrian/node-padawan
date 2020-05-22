@@ -49,12 +49,6 @@ const ArticleState = (props) => {
     }
   };
 
-  const clearArticles = () => {
-    dispatch({
-      type: CLEAR_ARTICLES,
-    });
-  };
-
   // create article
   const createArticle = async (article) => {
     const config = {
@@ -90,6 +84,13 @@ const ArticleState = (props) => {
     dispatch({
       type: DELETE_ARTICLE,
       payload: id,
+    });
+  };
+
+  // clear articles
+  const clearArticles = () => {
+    dispatch({
+      type: CLEAR_ARTICLES,
     });
   };
 
@@ -138,6 +139,7 @@ const ArticleState = (props) => {
         clearCurrent,
         filterArticle,
         clearArticle,
+        clearArticles,
       }}
     >
       {props.children}

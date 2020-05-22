@@ -14,15 +14,21 @@ import { personCircle, helpOutline, home } from "ionicons/icons";
 import PropTypes from "prop-types";
 import AuthContext from "../context/auth/authContext";
 import AlertContext from "../context/alert/alertContext";
+import ArticleContext from "../context/articles/articleContext";
 
 const Navbar = ({ title }) => {
-  const context = useContext(AuthContext);
-  const { logout, isAuthenticated, user } = context;
+  const authContext = useContext(AuthContext);
   const alertContext = useContext(AlertContext);
+  const articleContext = useContext(ArticleContext);
+
+  const { logout, isAuthenticated, user } = authContext;
   const { setAlert } = alertContext;
+  const { clearArticles } = articleContext;
 
   const onLogout = () => {
     logout();
+    // clear articles on logout
+    clearArticles();
   };
 
   const authLinks = (
