@@ -28,8 +28,8 @@ const Articles = () => {
     loadArticles();
   }, []);
 
-  if (contacts !== null && contacts.length == 0 && !loading) {
-    <IonLabel>Please add a contact</IonLabel>;
+  if (articles !== null && articles.length == 0 && !loading) {
+    return <IonLabel>Please add a contact</IonLabel>;
   }
 
   return (
