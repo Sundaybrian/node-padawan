@@ -27,7 +27,7 @@ const ArticleItem = ({ article }) => {
   return (
     <IonItem key={article.title} button>
       <IonThumbnail slot="start">
-        <img src={article.imgUrl} />
+        <img src={article.imageUrl} />
       </IonThumbnail>
       <IonLabel>
         <h2>{article.title}</h2>
