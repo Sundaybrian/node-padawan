@@ -45,6 +45,9 @@ const ArticleForm = () => {
     e.preventDefault();
     if (currentArticle) {
       // if currentarticle we are editing
+
+      console.log("current article:,", currentArticle, "Article:", article);
+
       editArticle(article);
       clearCurrent();
     } else {

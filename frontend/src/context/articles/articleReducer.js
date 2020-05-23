@@ -8,7 +8,7 @@ import {
   SET_ALERT,
   REMOVE_ALERT,
   CLEAR_FILTER,
-  CONTACT_ERROR,
+  ARTICLE_ERROR,
   LOAD_ARTICLES,
   CLEAR_ARTICLES,
 } from "../types";
@@ -71,7 +71,7 @@ export default (state, action) => {
           return article.title.match(regex);
         }),
       };
-    case CONTACT_ERROR:
+    case ARTICLE_ERROR:
       return {
         ...state,
         error: action.payload,

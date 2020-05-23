@@ -13,7 +13,7 @@ import {
   SET_ALERT,
   REMOVE_ALERT,
   CLEAR_FILTER,
-  CONTACT_ERROR,
+  ARTICLE_ERROR,
   LOAD_ARTICLES,
   CLEAR_ARTICLES,
 } from "../types";
@@ -43,7 +43,7 @@ const ArticleState = (props) => {
       });
     } catch (error) {
       dispatch({
-        type: CONTACT_ERROR,
+        type: ARTICLE_ERROR,
         payload: error.response.msg,
       });
     }
@@ -65,18 +65,26 @@ const ArticleState = (props) => {
       });
     } catch (error) {
       dispatch({
-        type: CONTACT_ERROR,
+        type: ARTICLE_ERROR,
         payload: error.response.msg,
       });
     }
   };
 
   // update article
-  const editArticle = (article) => {
-    dispatch({
-      type: UPDATE_ARTICLE,
-      payload: article,
-    });
+  const editArticle = async (article) => {
+    try {
+      const res = await axios.put(`/api/articles/${article._id}`, article);
+      dispatch({
+        type: UPDATE_ARTICLE,
+        payload: res.data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ARTICLE_ERROR,
+        payload: error.response.error,
+      });
+    }
   };
 
   // delete article

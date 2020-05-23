@@ -41,10 +41,10 @@ const Articles = () => {
         <>
           {filteredArticles !== null
             ? filteredArticles.map((article) => (
-                <ArticleItem key={article.id} article={article} />
+                <ArticleItem key={article._id} article={article} />
               ))
             : articles.map((article) => (
-                <ArticleItem key={article.id} article={article} />
+                <ArticleItem key={article._id} article={article} />
               ))}
         </>
       ) : (
