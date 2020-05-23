@@ -82,7 +82,7 @@ const ArticleState = (props) => {
   // delete article
   const deleteArticle = async (id) => {
     try {
-      const res = await axios.post(`/api/articles/${id}`);
+      const res = await axios.delete(`/api/articles/${id}`);
       dispatch({
         type: DELETE_ARTICLE,
         payload: id,
