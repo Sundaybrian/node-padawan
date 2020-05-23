@@ -18,6 +18,27 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+//@ route GET api/articles/:id
+//@ desc Get a single article
+//@ access private
+
+router.get(
+  "/:id",
+  [auth, [check("_id", "please provide id for the article").not().isEmpty()]],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
+
+    try {
+      const article = await Article.findById({ _id: req.body._id });
+      res.status(200).json(article);
+    } catch (error) {
+      res.send(400).json({ error: error.message });
+    }
+  }
+);
+
 // @route   POST api/articles
 // @desc    Create an article
 // @access  Private
@@ -61,14 +82,37 @@ router.post(
 // @route   PUT api/articles/:id
 // @desc    Update an article
 // @access  Private
-router.put("/:id", (req, res) => {
-  res.send("Update article");
-});
+router.put(
+  "/:id",
+  [auth, [check("_id", "Article id must be provided").not().isEmpty()]],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() });
+
+    const { _id, title, subtitle, content, imageUrl } = req.body;
+    try {
+      const article = await Article.findByIdAndUpdate(
+        { _id: _id },
+        { title, subtitle, content, imageUrl },
+        { new: true }
+      );
+
+      res.status(200).json(article);
+    } catch (error) {
+      console.log(error.message);
+
+      res.status(400).json({ error: error.message });
+    }
+
+    res.send("Update article");
+  }
+);
 
 // @route   PUT api/articles/:id
 // @desc    Delete an article
 // @access  Private
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   res.send("Delete article");
 });
 
