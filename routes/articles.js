@@ -95,7 +95,7 @@ router.put(
       const article = await Article.findByIdAndUpdate(
         { _id: _id },
         { title, subtitle, content, imageUrl },
-        { new: true }
+        { new: true, upsert: true }
       );
 
       res.status(200).json(article);
