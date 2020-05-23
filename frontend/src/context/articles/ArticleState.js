@@ -93,9 +93,16 @@ const ArticleState = (props) => {
       const res = await axios.delete(`/api/articles/${id}`);
       dispatch({
         type: DELETE_ARTICLE,
-        payload: id,
+        payload: res.data._id,
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: ARTICLE_ERROR,
+        payload: error.response.error,
+      });
+    }
   };
 
   // clear articles

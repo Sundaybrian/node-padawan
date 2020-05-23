@@ -112,8 +112,23 @@ router.put(
 // @route   PUT api/articles/:id
 // @desc    Delete an article
 // @access  Private
-router.delete("/:id", auth, (req, res) => {
-  res.send("Delete article");
+router.delete("/:id", auth, async (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty())
+    return res.status(400).json({ errors: errors.array() });
+
+  try {
+    const article = await Article.findByIdAndRemove({
+      _id: req.params.id,
+    });
+    // return id of deleted article to refresh the ui
+    res.status(200).json(article);
+  } catch (error) {
+    console.log(error.message);
+
+    res.status(400).json({ error: error.message });
+  }
 });
 
 module.exports = router;
