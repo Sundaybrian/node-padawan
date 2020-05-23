@@ -23,7 +23,7 @@ const ArticleForm = () => {
         title: "",
         subtitle: "",
         content: "",
-        imgUrl: "",
+        imageUrl: "",
       });
     }
   }, [ArticleContext, currentArticle]);
@@ -32,10 +32,10 @@ const ArticleForm = () => {
     title: "",
     subtitle: "",
     content: "",
-    imgUrl: "",
+    imageUrl: "",
   });
 
-  const { title, subtitle, content, imgUrl } = article;
+  const { title, subtitle, content, imageUrl } = article;
 
   const onChange = (e) => {
     setArticle({ ...article, [e.target.name]: e.target.value });
@@ -56,7 +56,7 @@ const ArticleForm = () => {
       title: "",
       subtitle: "",
       content: "",
-      imgUrl: "",
+      imageUrl: "",
     });
   };
 
@@ -108,9 +108,9 @@ const ArticleForm = () => {
         <IonInput
           //   placeholder="enter article image"
           type="text"
-          name="imgUrl"
+          name="imageUrl"
           required
-          value={imgUrl}
+          value={imageUrl}
           onIonChange={onChange}
         ></IonInput>
       </IonItem>
