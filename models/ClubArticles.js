@@ -20,4 +20,4 @@ const clubArticleSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("ClubArticleSchema", clubArticleSchema);
+module.exports = mongoose.model("ClubArticle", clubArticleSchema);
