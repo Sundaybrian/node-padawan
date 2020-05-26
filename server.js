@@ -22,5 +22,5 @@ app.use("/api/articles", require("./routes/articles"));
 app.use("/api/clubArticles", require("./routes/clubArticles"));
 // app.use("/api/videos", require("./routes/videos"));
 
-// const PORT = process.env.PORT
-app.listen(5000, () => console.log("Massive fc server started"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log("Massive fc server started"));
