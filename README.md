@@ -10,7 +10,7 @@
 
 - part 1 is the ionic mobile app **[away-fans](https://github.com/Sundaybrian/away-fans)**
 - part 2 is the backend/frontend **nodejs,mongodb and react [node-padawan](https://github.com/Sundaybrian/node-padawan)**
-- part 3 is the web scraper that provides the data for the systems made with nodejs, cheeriojs and mongodb
+- part 3 is the web scraper that provides the data for the systems made with nodejs, cheeriojs and mongodb **[massive-scraper](https://github.com/Sundaybrian/massivefc-scraper)**
 
 ## Setup/Installation Requirements
 
