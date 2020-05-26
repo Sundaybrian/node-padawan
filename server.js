@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const path = require("path");
 
 dotenv.config();
 
@@ -20,6 +21,17 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/articles", require("./routes/articles"));
 app.use("/api/clubArticles", require("./routes/clubArticles"));
+
+// serve static assests in production
+if (process.env.PRODUCTION === "production") {
+  // set static folder
+  app.use(express.static("frontend/build"));
+
+  // hit homepage load index page
+  app.get("*", (req, res) =>
+    res.sendfile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+}
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log("Massive fc server started"));
