@@ -1,4 +1,4 @@
-# Massive club cast Concept Backend/Frontend
+# Massive club cast Concept Backend/Web/Mobile/Scrapper
 
 ### Under Development
 
@@ -6,14 +6,18 @@
 
 ## Description
 
-This is a three part platform assault; ionic angular, ionic react , nodejs-mongodb
+- This is a three part platform assault; ionic angular, ionic react , nodejs-mongodb, the web frontend and backend is hosted here **[massivefc](https://agile-citadel-18179.herokuapp.com/)**
 
-part 1 is here still under development [away-fans](https://github.com/Sundaybrian/away-fans)
-part 2 is the backend/frontend (nodejs,mongodb) and react[node-padawan](https://github.com/Sundaybrian/node-padawan).
-
-[BaseUrl](https://agile-citadel-18179.herokuapp.com/api/) for the application
+- part 1 is the ionic mobile app **[away-fans](https://github.com/Sundaybrian/away-fans)**
+- part 2 is the backend/frontend **nodejs,mongodb and react [node-padawan](https://github.com/Sundaybrian/node-padawan)**
+- part 3 is the web scraper that provides the data for the systems made with nodejs, cheeriojs and mongodb
 
 ## Setup/Installation Requirements
+
+## APis
+
+- [BaseUrl](https://agile-citadel-18179.herokuapp.com/api/) for the application
+- endpoints include auth, users, articles, clubArticles.**all api reference will be provided soon, but you can take a sneak peek in the routes folder for node-padawan and massive-scrapper**
 
 ## Technologies Used
 
@@ -25,6 +29,7 @@ part 2 is the backend/frontend (nodejs,mongodb) and react[node-padawan](https://
 - ionic-angular
 - angular
 - heroku
+- cheeriojs
 
 ## Learn More
 
