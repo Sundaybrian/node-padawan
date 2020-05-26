@@ -20,7 +20,6 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/articles", require("./routes/articles"));
 app.use("/api/clubArticles", require("./routes/clubArticles"));
-// app.use("/api/videos", require("./routes/videos"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log("Massive fc server started"));
