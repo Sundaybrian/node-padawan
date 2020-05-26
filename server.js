@@ -16,6 +16,11 @@ mongoose.connect(
 // Middleware
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 // define routes middleware
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
