@@ -16,4 +16,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @route POST api/clubarticles/insertMany
+// @desc insert all articles
+// @access public
+router.post("/insertMany", async (req, res) => {
+  try {
+    const articles = await ClubArticle.insertMany(req.body);
+    res.status(201).json(articles);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;

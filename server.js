@@ -26,6 +26,7 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/articles", require("./routes/articles"));
 app.use("/api/clubArticles", require("./routes/clubArticles"));
+app.use("/api/videos", require("./routes/videos"));
 
 // serve static assests in production
 if (process.env.PRODUCTION === "production") {
