@@ -27,7 +27,6 @@
 - mongodb
 - ionic-react
 - ionic-angular
-- angular
 - heroku
 - cheeriojs
 

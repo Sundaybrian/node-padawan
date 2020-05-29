@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const clubArticleSchema = new mongoose.Schema({
+const clubVideoSchema = new mongoose.Schema({
   club: {
     type: mongoose.Schema.Types.ObjectId,
     refs: "clubs",
@@ -8,25 +8,18 @@ const clubArticleSchema = new mongoose.Schema({
   title: {
     type: String,
   },
+  duration: {
+    type: String,
+  },
   url: {
     type: String,
   },
-  excerpt: {
-    type: String,
-  },
-  imageUrl: {
-    type: String,
-  },
-  createdAt: {
+  thumbnail: {
     type: String,
   },
   scrappedDate: {
     type: Date,
-    default: Date.now,
-  },
-  category: {
-    type: String,
   },
 });
 
-module.exports = mongoose.model("ClubArticle", clubArticleSchema);
+module.exports = mongoose.model("ClubVideos", clubVideoSchema);
