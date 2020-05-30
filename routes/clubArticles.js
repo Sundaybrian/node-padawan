@@ -8,6 +8,8 @@ const ClubArticle = require("../models/ClubArticles");
 
 router.get("/", async (req, res) => {
   // pagination options
+  const category = req.query.category || "category-news";
+  const sort_by = req.query.sort_by || "scrappedDate";
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
 
@@ -17,7 +19,8 @@ router.get("/", async (req, res) => {
   const results = {};
 
   try {
-    const articles = await ClubArticle.find()
+    const articles = await ClubArticle.find({ category })
+      .sort(sort_by)
       .limit(limit)
       .skip(startIndex)
       .exec();
