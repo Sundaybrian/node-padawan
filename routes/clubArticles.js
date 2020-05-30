@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
   try {
     const articles = await ClubArticle.find()
       .limit(limit)
-      .skip((page - 1) * limit)
+      .skip(startIndex)
       .exec();
 
     // fetch articles count
@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
     }
 
     if (endIndex < count) {
-      results.nexPage = page + 1;
+      results.nextPage = page + 1;
     }
 
     results.totalPages = Math.ceil(count / limit);
