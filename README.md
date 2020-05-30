@@ -122,6 +122,9 @@ Create GET requests
 4. Get all club articles with a limit of 10
    `http://localhost:5000/api/clubArticles?limit=10`
 
+5. Get all club articles with a specified category
+   `http://localhost:5000/api/clubArticles?category=category-news`
+
 **Create, Read and Update articles endpoint**
 
 1. Create an article [POST]<br/>

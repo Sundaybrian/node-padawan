@@ -5,7 +5,7 @@ const Article = require("../models/Article");
 const { check, validationResult } = require("express-validator");
 
 // @route   GET api/articles
-// @desc    Get all club articles
+// @desc    Get all articles
 // @access  Public
 router.get("/", auth, async (req, res) => {
   try {
