@@ -7,12 +7,44 @@ const ClubVideos = require("../models/Videos");
 // @access public
 
 router.get("/", async (req, res) => {
+  // pagination options
+  const sort_by = req.query.sort_by || "scrappedDate";
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 4;
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+
+  const results = {};
+
   try {
-    const videos = await ClubVideos.find();
-    res.status(200).json(videos);
+    const videos = await ClubVideos.find()
+      .sort(sort_by)
+      .limit(limit)
+      .skip(startIndex)
+      .exec();
+
+    // fetch articles count
+    const count = await ClubVideos.countDocuments();
+
+    results.results = videos;
+
+    if (startIndex > 0) {
+      results.previousPage = page - 1;
+    }
+
+    if (endIndex < count) {
+      results.nextPage = page + 1;
+    }
+
+    results.totalPages = Math.ceil(count / limit);
+    results.currentPage = page;
+    results.limit = limit;
+
+    res.status(200).json(results);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: message.error });
   }
 });
 

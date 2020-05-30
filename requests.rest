@@ -1,2 +1,6 @@
 
+###
 GET http://localhost:5000/api/clubArticles?category=category-news&sort_by=scrappedDate&limit=10
+
+### 
+GET http://localhost:5000/api/videos
