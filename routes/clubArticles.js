@@ -1,17 +1,18 @@
 const router = require("express").Router();
 const { check, validationResult } = require("express-validator");
 const ClubArticle = require("../models/ClubArticles");
+const memCached = require("../middlewares/memCache");
 
 // @route GET api/clubarticles
 // @desc get all articles
 // @access public
 
-router.get("/", async (req, res) => {
+router.get("/", memCached(5 * 1000 * 1000), async (req, res) => {
   // pagination options
   const category = req.query.category || "category-news";
   const sort_by = req.query.sort_by || "scrappedDate";
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 5;
+  const limit = parseInt(req.query.limit) || 10;
 
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
